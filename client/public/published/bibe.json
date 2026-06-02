@@ -1,0 +1,32 @@
+{
+  "id": "bibe",
+  "name": "Bible Basics",
+  "description": "A quiz for everyone — 21 questions on the most well-known people, stories, and facts from the Bible. No prior reading required.",
+  "author": "Bible Millionaire Team",
+  "version": "1.0",
+  "language": "en",
+  "isPublished": true,
+  "questions": [
+    {"id":"bb01","difficulty":1,"text":"Who built a large boat (ark) to survive a great flood?","options":["Moses","Abraham","Noah","Elijah"],"correct":2,"reference":"Genesis 6–7"},
+    {"id":"bb02","difficulty":1,"text":"In which city was Jesus born?","options":["Jerusalem","Nazareth","Bethlehem","Jericho"],"correct":2,"reference":"Luke 2:4–7"},
+    {"id":"bb03","difficulty":1,"text":"What is the very first book of the Bible?","options":["Exodus","Genesis","Psalms","Matthew"],"correct":1,"reference":"Genesis 1:1"},
+    {"id":"bb04","difficulty":1,"text":"Who was the first man God created, according to the Bible?","options":["Cain","Abel","Noah","Adam"],"correct":3,"reference":"Genesis 2:7"},
+    {"id":"bb05","difficulty":2,"text":"What did young David use to defeat the giant Goliath?","options":["A sword","A bow and arrow","A sling and a stone","His bare hands"],"correct":2,"reference":"1 Samuel 17:49–50"},
+    {"id":"bb06","difficulty":2,"text":"Who betrayed Jesus for thirty pieces of silver?","options":["Peter","Judas Iscariot","Pontius Pilate","Herod"],"correct":1,"reference":"Matthew 26:15"},
+    {"id":"bb07","difficulty":2,"text":"How many disciples did Jesus choose?","options":["7","10","12","40"],"correct":2,"reference":"Matthew 10:1–4"},
+    {"id":"bb08","difficulty":2,"text":"What was the name of the first woman in the Bible?","options":["Sarah","Rachel","Mary","Eve"],"correct":3,"reference":"Genesis 3:20"},
+    {"id":"bb09","difficulty":3,"text":"In which garden did Adam and Eve live before the Fall?","options":["Garden of Gethsemane","Garden of Eden","Garden of Paradise","Garden of Canaan"],"correct":1,"reference":"Genesis 2:8"},
+    {"id":"bb10","difficulty":3,"text":"Which prophet was swallowed by a large fish?","options":["Elijah","Jonah","Isaiah","Amos"],"correct":1,"reference":"Jonah 1:17"},
+    {"id":"bb11","difficulty":3,"text":"Which body of water did Moses part so the Israelites could cross on dry ground?","options":["The Jordan River","The Dead Sea","The Mediterranean Sea","The Red Sea"],"correct":3,"reference":"Exodus 14:21"},
+    {"id":"bb12","difficulty":3,"text":"What were the Ten Commandments written on?","options":["Papyrus","Clay tablets","Stone tablets","Parchment"],"correct":2,"reference":"Exodus 31:18"},
+    {"id":"bb13","difficulty":4,"text":"How many days and nights did it rain during Noah's flood?","options":["7","20","40","100"],"correct":2,"reference":"Genesis 7:12"},
+    {"id":"bb14","difficulty":4,"text":"Whose city walls fell after the Israelites marched around them?","options":["Jerusalem","Babylon","Jericho","Nineveh"],"correct":2,"reference":"Joshua 6:20"},
+    {"id":"bb15","difficulty":4,"text":"Which disciple denied knowing Jesus three times before the rooster crowed?","options":["James","John","Thomas","Peter"],"correct":3,"reference":"Matthew 26:34, 75"},
+    {"id":"bb16","difficulty":4,"text":"Who was the earthly mother of Jesus?","options":["Martha","Elizabeth","Mary","Ruth"],"correct":2,"reference":"Luke 1:30–31"},
+    {"id":"bb17","difficulty":5,"text":"How many books are in the Protestant Bible?","options":["39","56","66","73"],"correct":2,"reference":"General knowledge"},
+    {"id":"bb18","difficulty":5,"text":"In which language was the New Testament originally written?","options":["Latin","Hebrew","Aramaic","Greek"],"correct":3,"reference":"General knowledge"},
+    {"id":"bb19","difficulty":5,"text":"Which prophet was taken up to heaven in a chariot of fire?","options":["Moses","Enoch","Elijah","Isaiah"],"correct":2,"reference":"2 Kings 2:11"},
+    {"id":"bb20","difficulty":6,"text":"What gift did the young King Solomon ask God to give him above all else?","options":["Long life","Riches","Wisdom","Victory over his enemies"],"correct":2,"reference":"1 Kings 3:9–12"},
+    {"id":"bb21","difficulty":6,"text":"What were the names of Noah's three sons?","options":["Cain, Abel, and Seth","Shem, Ham, and Japheth","Reuben, Simeon, and Levi","Ishmael, Isaac, and Esau"],"correct":1,"reference":"Genesis 5:32"}
+  ]
+}

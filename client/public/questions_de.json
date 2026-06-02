@@ -1,0 +1,977 @@
+[
+  {
+    "id": "q001",
+    "difficulty": 1,
+    "text": "Wie viele Evangelien gibt es im Neuen Testament?",
+    "options": [
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 4,23; Markus 1,1; Lukas 1,1; Johannes 1,1"
+  },
+  {
+    "id": "q002",
+    "difficulty": 1,
+    "text": "Wie heißt das erste Buch der Bibel?",
+    "options": [
+      "Exodus",
+      "Genesis",
+      "Psalmen",
+      "Offenbarung"
+    ],
+    "correct": 1,
+    "reference": "1. Mose 1,1"
+  },
+  {
+    "id": "q003",
+    "difficulty": 1,
+    "text": "In welcher Stadt wurde Jesus geboren?",
+    "options": [
+      "Nazareth",
+      "Jerusalem",
+      "Bethlehem",
+      "Jericho"
+    ],
+    "correct": 2,
+    "reference": "Lukas 2,4–7"
+  },
+  {
+    "id": "q004",
+    "difficulty": 1,
+    "text": "Wie viele Apostel hat Jesus ausgewählt?",
+    "options": [
+      "7",
+      "10",
+      "12",
+      "14"
+    ],
+    "correct": 2,
+    "reference": "Matthäus 10,1–4"
+  },
+  {
+    "id": "q005",
+    "difficulty": 1,
+    "text": "Wer taufte Jesus?",
+    "options": [
+      "Petrus",
+      "Johannes der Täufer",
+      "Maria",
+      "Paulus"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 3,13–17"
+  },
+  {
+    "id": "q006",
+    "difficulty": 1,
+    "text": "In welchem Fluss wurde Jesus getauft?",
+    "options": [
+      "Nil",
+      "Euphrat",
+      "Jordan",
+      "Galiläa"
+    ],
+    "correct": 2,
+    "reference": "Matthäus 3,13"
+  },
+  {
+    "id": "q007",
+    "difficulty": 1,
+    "text": "Wie viele Tage fastete Jesus in der Wüste?",
+    "options": [
+      "7",
+      "20",
+      "40",
+      "120"
+    ],
+    "correct": 2,
+    "reference": "Matthäus 4,1–2"
+  },
+  {
+    "id": "q008",
+    "difficulty": 1,
+    "text": "Was war der irdische Beruf von Jesus?",
+    "options": [
+      "Fischer",
+      "Zimmermann",
+      "Bäcker",
+      "Hirte"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 13,55"
+  },
+  {
+    "id": "q009",
+    "difficulty": 1,
+    "text": "Wer war die Mutter Jesu?",
+    "options": [
+      "Elisabeth",
+      "Sara",
+      "Maria",
+      "Mirjam"
+    ],
+    "correct": 2,
+    "reference": "Lukas 1,30–31"
+  },
+  {
+    "id": "q010",
+    "difficulty": 1,
+    "text": "Was ist das erste Gebot?",
+    "options": [
+      "Du sollst nicht töten",
+      "Ehre Vater und Mutter",
+      "Du sollst keine anderen Götter haben",
+      "Du sollst nicht stehlen"
+    ],
+    "correct": 2,
+    "reference": "2. Mose 20,3"
+  },
+  {
+    "id": "q011",
+    "difficulty": 1,
+    "text": "Was feiern Christen an Weihnachten?",
+    "options": [
+      "Auferstehung",
+      "Taufe Jesu",
+      "Geburt Jesu",
+      "Pfingsten"
+    ],
+    "correct": 2,
+    "reference": "Lukas 2,1–20"
+  },
+  {
+    "id": "q012",
+    "difficulty": 1,
+    "text": "Was feiern Christen an Ostern?",
+    "options": [
+      "Geburt Jesu",
+      "Auferstehung Jesu",
+      "Das Letzte Abendmahl",
+      "Himmelfahrt"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 28,1–10"
+  },
+  {
+    "id": "q013",
+    "difficulty": 1,
+    "text": "Wer schrieb die Psalmen größtenteils?",
+    "options": [
+      "Mose",
+      "Salomo",
+      "David",
+      "Paulus"
+    ],
+    "correct": 2,
+    "reference": "2. Samuel 23,1–2"
+  },
+  {
+    "id": "q014",
+    "difficulty": 1,
+    "text": "Wie viele Tage und Nächte regnete es in Noahs Flut?",
+    "options": [
+      "7",
+      "20",
+      "40",
+      "100"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 7,12"
+  },
+  {
+    "id": "q015",
+    "difficulty": 1,
+    "text": "Was symbolisiert der Regenbogen in der Bibel?",
+    "options": [
+      "Gottes Macht",
+      "Gottes Bund",
+      "Himmel",
+      "Hoffnung"
+    ],
+    "correct": 1,
+    "reference": "1. Mose 9,13–16"
+  },
+  {
+    "id": "q016",
+    "difficulty": 2,
+    "text": "Wer verriet Jesus?",
+    "options": [
+      "Petrus",
+      "Thomas",
+      "Judas Iskariot",
+      "Bartholomäus"
+    ],
+    "correct": 2,
+    "reference": "Matthäus 26,14–16"
+  },
+  {
+    "id": "q017",
+    "difficulty": 2,
+    "text": "Welcher Apostel verleugnete Jesus dreimal?",
+    "options": [
+      "Thomas",
+      "Jakobus",
+      "Petrus",
+      "Johannes"
+    ],
+    "correct": 2,
+    "reference": "Matthäus 26,69–75"
+  },
+  {
+    "id": "q018",
+    "difficulty": 2,
+    "text": "Was bedeutet „Immanuel\"?",
+    "options": [
+      "Fürst des Friedens",
+      "Sohn Gottes",
+      "Gott mit uns",
+      "Licht der Welt"
+    ],
+    "correct": 2,
+    "reference": "Jesaja 7,14"
+  },
+  {
+    "id": "q019",
+    "difficulty": 2,
+    "text": "Welcher Psalm beginnt mit „Der Herr ist mein Hirte\"?",
+    "options": [
+      "Psalm 1",
+      "Psalm 23",
+      "Psalm 100",
+      "Psalm 150"
+    ],
+    "correct": 1,
+    "reference": "Psalm 23,1"
+  },
+  {
+    "id": "q020",
+    "difficulty": 2,
+    "text": "Wer war der irdische Vater Jesu?",
+    "options": [
+      "Zacharias",
+      "Joachim",
+      "Josef",
+      "Elisäus"
+    ],
+    "correct": 2,
+    "reference": "Lukas 1,26–27"
+  },
+  {
+    "id": "q021",
+    "difficulty": 2,
+    "text": "Wie hieß der erste Mensch laut Bibel?",
+    "options": [
+      "Noah",
+      "Abraham",
+      "Adam",
+      "Elias"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 2,7"
+  },
+  {
+    "id": "q022",
+    "difficulty": 2,
+    "text": "Wer war die erste Frau?",
+    "options": [
+      "Sara",
+      "Ruth",
+      "Eva",
+      "Debora"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 2,21–22"
+  },
+  {
+    "id": "q023",
+    "difficulty": 2,
+    "text": "Welcher Prophet wurde von einem großen Fisch verschluckt?",
+    "options": [
+      "Elia",
+      "Jona",
+      "Jesaja",
+      "Jeremias"
+    ],
+    "correct": 1,
+    "reference": "Jona 1,17"
+  },
+  {
+    "id": "q024",
+    "difficulty": 2,
+    "text": "Auf welchem Berg empfing Mose die Zehn Gebote?",
+    "options": [
+      "Berg Zion",
+      "Karmel",
+      "Berg Sinai",
+      "Ölberg"
+    ],
+    "correct": 2,
+    "reference": "2. Mose 19–20"
+  },
+  {
+    "id": "q025",
+    "difficulty": 2,
+    "text": "Was symbolisiert die Taube im Christentum?",
+    "options": [
+      "Frieden und Heiliger Geist",
+      "Liebe",
+      "Weisheit",
+      "Glaube"
+    ],
+    "correct": 0,
+    "reference": "Matthäus 3,16"
+  },
+  {
+    "id": "q026",
+    "difficulty": 2,
+    "text": "Wer war der erste König Israels?",
+    "options": [
+      "David",
+      "Salomo",
+      "Saul",
+      "Samuel"
+    ],
+    "correct": 2,
+    "reference": "1. Samuel 10,1"
+  },
+  {
+    "id": "q027",
+    "difficulty": 2,
+    "text": "Was sind die zwei größten Gebote, die Jesus nannte?",
+    "options": [
+      "Glaube und Hoffnung",
+      "Gott und den Nächsten lieben",
+      "Beten und Fasten",
+      "Taufe und Abendmahl"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 22,37–39"
+  },
+  {
+    "id": "q028",
+    "difficulty": 2,
+    "text": "Wie viele Bücher hat das Neue Testament?",
+    "options": [
+      "17",
+      "22",
+      "27",
+      "33"
+    ],
+    "correct": 2,
+    "reference": "Römer 1,1 (NT-Briefe)"
+  },
+  {
+    "id": "q029",
+    "difficulty": 2,
+    "text": "Wie heißt der Garten, in dem Jesus verhaftet wurde?",
+    "options": [
+      "Garten Eden",
+      "Garten Getsemane",
+      "Garten Josefs",
+      "Garten am Ölberg"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 26,36"
+  },
+  {
+    "id": "q030",
+    "difficulty": 2,
+    "text": "Wer schrieb die meisten Briefe im Neuen Testament?",
+    "options": [
+      "Petrus",
+      "Johannes",
+      "Paulus",
+      "Jakobus"
+    ],
+    "correct": 2,
+    "reference": "Römer 1,1"
+  },
+  {
+    "id": "q031",
+    "difficulty": 3,
+    "text": "Wie viele Bücher hat die protestantische Bibel?",
+    "options": [
+      "39",
+      "54",
+      "66",
+      "73"
+    ],
+    "correct": 2,
+    "reference": "2. Timotheus 3,16"
+  },
+  {
+    "id": "q032",
+    "difficulty": 3,
+    "text": "Welches ist das längste Buch der Bibel?",
+    "options": [
+      "Jesaja",
+      "Genesis",
+      "Psalmen",
+      "Jeremia"
+    ],
+    "correct": 2,
+    "reference": "Psalm 1–150"
+  },
+  {
+    "id": "q033",
+    "difficulty": 3,
+    "text": "Wie hieß Abrahams Frau?",
+    "options": [
+      "Rebekka",
+      "Sara",
+      "Rahel",
+      "Lea"
+    ],
+    "correct": 1,
+    "reference": "1. Mose 17,15"
+  },
+  {
+    "id": "q034",
+    "difficulty": 3,
+    "text": "Wer schrieb die Offenbarung?",
+    "options": [
+      "Paulus",
+      "Petrus",
+      "Johannes",
+      "Lukas"
+    ],
+    "correct": 2,
+    "reference": "Offenbarung 1,1"
+  },
+  {
+    "id": "q035",
+    "difficulty": 3,
+    "text": "Was schenkten die Weisen aus dem Morgenland?",
+    "options": [
+      "Gold, Myrrhe, Weihrauch",
+      "Gold, Silber, Gewürze",
+      "Gold, Wein, Öl",
+      "Brot, Wein, Lamm"
+    ],
+    "correct": 0,
+    "reference": "Matthäus 2,11"
+  },
+  {
+    "id": "q036",
+    "difficulty": 3,
+    "text": "Wer war Mose's Bruder?",
+    "options": [
+      "Josua",
+      "Kaleb",
+      "Aaron",
+      "Mirjam"
+    ],
+    "correct": 2,
+    "reference": "2. Mose 4,14"
+  },
+  {
+    "id": "q037",
+    "difficulty": 3,
+    "text": "Was ist Pfingsten?",
+    "options": [
+      "Geburt Jesu",
+      "Ausgießung des Heiligen Geistes",
+      "Mose empfängt das Gesetz",
+      "Taufe Jesu"
+    ],
+    "correct": 1,
+    "reference": "Apostelgeschichte 2,1–4"
+  },
+  {
+    "id": "q038",
+    "difficulty": 3,
+    "text": "Was bedeutet „Amen\"?",
+    "options": [
+      "Lobe Gott",
+      "So sei es",
+      "Herr erhöre uns",
+      "In Gottes Namen"
+    ],
+    "correct": 1,
+    "reference": "Offenbarung 22,20"
+  },
+  {
+    "id": "q039",
+    "difficulty": 3,
+    "text": "Wie viele Söhne hatte Jakob?",
+    "options": [
+      "10",
+      "11",
+      "12",
+      "14"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 35,22–26"
+  },
+  {
+    "id": "q040",
+    "difficulty": 3,
+    "text": "Wie heißt der Sohn, den Abraham opfern sollte?",
+    "options": [
+      "Ismael",
+      "Esau",
+      "Isaak",
+      "Jakob"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 22,1–2"
+  },
+  {
+    "id": "q041",
+    "difficulty": 3,
+    "text": "Welcher Jünger zweifelte an der Auferstehung?",
+    "options": [
+      "Petrus",
+      "Jakobus",
+      "Thomas",
+      "Bartholomäus"
+    ],
+    "correct": 2,
+    "reference": "Johannes 20,24–25"
+  },
+  {
+    "id": "q042",
+    "difficulty": 3,
+    "text": "Wie hieß Paulus vor seiner Bekehrung?",
+    "options": [
+      "Silas",
+      "Barnabas",
+      "Saulus",
+      "Timotheus"
+    ],
+    "correct": 2,
+    "reference": "Apostelgeschichte 9,1"
+  },
+  {
+    "id": "q043",
+    "difficulty": 3,
+    "text": "Wo vollbrachte Jesus sein erstes Wunder?",
+    "options": [
+      "Jerusalem",
+      "Nazareth",
+      "Kapernaum",
+      "Kana"
+    ],
+    "correct": 3,
+    "reference": "Johannes 2,1"
+  },
+  {
+    "id": "q044",
+    "difficulty": 3,
+    "text": "Was war Jesu erstes Wunder?",
+    "options": [
+      "Heilung eines Blinden",
+      "Wandeln auf dem Wasser",
+      "Wasser in Wein verwandeln",
+      "Speisung der 5000"
+    ],
+    "correct": 2,
+    "reference": "Johannes 2,1–11"
+  },
+  {
+    "id": "q045",
+    "difficulty": 3,
+    "text": "Im Vaterunser – worum bitten wir vergeben zu werden?",
+    "options": [
+      "Sünden",
+      "Schulden",
+      "Fehler",
+      "Schwächen"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 6,9–13"
+  },
+  {
+    "id": "q046",
+    "difficulty": 4,
+    "text": "Welcher Stamm Israels stellte die Priester?",
+    "options": [
+      "Juda",
+      "Benjamin",
+      "Levi",
+      "Simeon"
+    ],
+    "correct": 2,
+    "reference": "4. Mose 3,6–10"
+  },
+  {
+    "id": "q047",
+    "difficulty": 4,
+    "text": "Auf welchem Berg ruhte die Arche Noah?",
+    "options": [
+      "Sinai",
+      "Zion",
+      "Ararat",
+      "Karmel"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 8,4"
+  },
+  {
+    "id": "q048",
+    "difficulty": 4,
+    "text": "Wie viele Psalmen gibt es?",
+    "options": [
+      "100",
+      "120",
+      "150",
+      "180"
+    ],
+    "correct": 2,
+    "reference": "Psalm 150"
+  },
+  {
+    "id": "q049",
+    "difficulty": 4,
+    "text": "Wer war der Vater von König Salomo?",
+    "options": [
+      "Saul",
+      "Samuel",
+      "David",
+      "Jonatan"
+    ],
+    "correct": 2,
+    "reference": "1. Könige 1,28–30"
+  },
+  {
+    "id": "q050",
+    "difficulty": 4,
+    "text": "Was ist das hebräische Wort für „Frieden\"?",
+    "options": [
+      "Schalom",
+      "Halleluja",
+      "Amen",
+      "Tora"
+    ],
+    "correct": 0,
+    "reference": "Johannes 20,19"
+  },
+  {
+    "id": "q051",
+    "difficulty": 4,
+    "text": "Welcher Apostel war ein Zöllner?",
+    "options": [
+      "Lukas",
+      "Matthäus",
+      "Zachäus",
+      "Markus"
+    ],
+    "correct": 1,
+    "reference": "Matthäus 9,9"
+  },
+  {
+    "id": "q052",
+    "difficulty": 4,
+    "text": "Wie heißen die fünf Bücher Mose?",
+    "options": [
+      "Die Propheten",
+      "Die Psalmen",
+      "Der Pentateuch",
+      "Die Briefe"
+    ],
+    "correct": 2,
+    "reference": "1. Mose 1,1 (Pentateuch)"
+  },
+  {
+    "id": "q053",
+    "difficulty": 4,
+    "text": "Wer schrieb das Lukas-Evangelium?",
+    "options": [
+      "Lukas, der Arzt",
+      "Lukas, der Apostel",
+      "Ein römischer Soldat",
+      "Unbekannt"
+    ],
+    "correct": 0,
+    "reference": "Lukas 1,1–4"
+  },
+  {
+    "id": "q054",
+    "difficulty": 4,
+    "text": "Was tat Saulus von Tarsus, als er Jesus begegnete?",
+    "options": [
+      "Betete im Tempel",
+      "Verfolgte Christen nach Damaskus",
+      "Fischte im Meer",
+      "Reiste nach Jerusalem"
+    ],
+    "correct": 1,
+    "reference": "Apostelgeschichte 9,3–4"
+  },
+  {
+    "id": "q055",
+    "difficulty": 4,
+    "text": "Wie hieß der Hohepriester, der Jesus verurteilte?",
+    "options": [
+      "Annas",
+      "Kaiphas",
+      "Pilatus",
+      "Herodes"
+    ],
+    "correct": 1,
+    "reference": "Johannes 18,24"
+  },
+  {
+    "id": "q056",
+    "difficulty": 4,
+    "text": "Was tat Jesus am Teich Betesda?",
+    "options": [
+      "Wasser in Wein verwandelt",
+      "Einen Gelähmten geheilt",
+      "5000 Menschen gespeist",
+      "Lazarus auferweckt"
+    ],
+    "correct": 1,
+    "reference": "Johannes 5,1–9"
+  },
+  {
+    "id": "q057",
+    "difficulty": 4,
+    "text": "Wer schrieb die Apostelgeschichte?",
+    "options": [
+      "Paulus",
+      "Petrus",
+      "Lukas",
+      "Johannes"
+    ],
+    "correct": 2,
+    "reference": "Apostelgeschichte 1,1"
+  },
+  {
+    "id": "q058",
+    "difficulty": 4,
+    "text": "Wie hieß Abraham, bevor Gott ihn umbenannte?",
+    "options": [
+      "Abram",
+      "Abiram",
+      "Amram",
+      "Abner"
+    ],
+    "correct": 0,
+    "reference": "1. Mose 17,5"
+  },
+  {
+    "id": "q059",
+    "difficulty": 4,
+    "text": "Wer ersetzte Judas Iskariot als zwölften Apostel?",
+    "options": [
+      "Barnabas",
+      "Stephanus",
+      "Matthias",
+      "Silas"
+    ],
+    "correct": 2,
+    "reference": "Apostelgeschichte 1,23–26"
+  },
+  {
+    "id": "q060",
+    "difficulty": 4,
+    "text": "Wie hießen die zwei Söhne von Adam und Eva in der Genesis?",
+    "options": [
+      "Set und Enosch",
+      "Kain und Abel",
+      "Sem und Ham",
+      "Ruben und Simeon"
+    ],
+    "correct": 1,
+    "reference": "1. Mose 4,1–2"
+  },
+  {
+    "id": "q061",
+    "difficulty": 6,
+    "text": "Auf welchem Konzil wurde der Kanon des Neuen Testaments offiziell festgelegt?",
+    "options": [
+      "Konzil von Nizäa (325)",
+      "Konzil von Karthago (397)",
+      "Konzil von Ephesus (431)",
+      "Konzil von Chalkedon (451)"
+    ],
+    "correct": 1,
+    "reference": "Apostelgeschichte 15,28"
+  },
+  {
+    "id": "q062",
+    "difficulty": 6,
+    "text": "Was ist die Lehre der „hypostatischen Union\"?",
+    "options": [
+      "Die Dreieinigkeit",
+      "Jesus ist vollständig Gott und vollständig Mensch",
+      "Maria als Mutter Gottes",
+      "Die Natur des Heiligen Geistes"
+    ],
+    "correct": 1,
+    "reference": "Johannes 1,14"
+  },
+  {
+    "id": "q063",
+    "difficulty": 5,
+    "text": "Wer schrieb die „Confessiones\" (Bekenntnisse)?",
+    "options": [
+      "Thomas von Aquin",
+      "Martin Luther",
+      "Augustinus von Hippo",
+      "Johannes Calvin"
+    ],
+    "correct": 2,
+    "reference": "Römer 7,24–25"
+  },
+  {
+    "id": "q064",
+    "difficulty": 6,
+    "text": "Was bedeutet „Theotokos\"?",
+    "options": [
+      "Gottesgebärerin",
+      "Königin des Himmels",
+      "Mutter der Kirche",
+      "Heilige Jungfrau"
+    ],
+    "correct": 0,
+    "reference": "Lukas 1,43"
+  },
+  {
+    "id": "q065",
+    "difficulty": 5,
+    "text": "In welchem Jahr schlug Martin Luther seine 95 Thesen an die Kirchentür?",
+    "options": [
+      "1505",
+      "1517",
+      "1521",
+      "1536"
+    ],
+    "correct": 1,
+    "reference": "2. Timotheus 3,16"
+  },
+  {
+    "id": "q066",
+    "difficulty": 6,
+    "text": "Was ist „Kenosis\" in der Theologie?",
+    "options": [
+      "Jesus entäußert sich göttlicher Attribute",
+      "Gottes Allwissenheit",
+      "Das Wohnen des Heiligen Geistes",
+      "Die Auferstehung"
+    ],
+    "correct": 0,
+    "reference": "Philipper 2,7"
+  },
+  {
+    "id": "q067",
+    "difficulty": 5,
+    "text": "Wer verfasste das Nizäische Glaubensbekenntnis?",
+    "options": [
+      "Konzil von Jerusalem",
+      "Konzil von Nizäa",
+      "Papst Leo I.",
+      "Augustinus"
+    ],
+    "correct": 1,
+    "reference": "Johannes 1,1"
+  },
+  {
+    "id": "q068",
+    "difficulty": 5,
+    "text": "Was ist „Eschatologie\"?",
+    "options": [
+      "Lehre der Engel",
+      "Lehre der Endzeit",
+      "Schöpfungslehre",
+      "Heilslehre"
+    ],
+    "correct": 1,
+    "reference": "Offenbarung 21,1"
+  },
+  {
+    "id": "q069",
+    "difficulty": 5,
+    "text": "Wer war der erste christliche Märtyrer?",
+    "options": [
+      "Jakobus",
+      "Petrus",
+      "Stephanus",
+      "Philippus"
+    ],
+    "correct": 2,
+    "reference": "Apostelgeschichte 7,59–60"
+  },
+  {
+    "id": "q070",
+    "difficulty": 5,
+    "text": "Wie nennt man die Lehre vom Wesen Gottes?",
+    "options": [
+      "Ekklesiologie",
+      "Soteriologie",
+      "Theologie im engeren Sinne",
+      "Pneumatologie"
+    ],
+    "correct": 2,
+    "reference": "2. Mose 3,14"
+  },
+  {
+    "id": "q071",
+    "difficulty": 5,
+    "text": "Was bedeutet „Didache\"?",
+    "options": [
+      "Lehre",
+      "Gebet",
+      "Gesetz",
+      "Gnade"
+    ],
+    "correct": 0,
+    "reference": "Matthäus 28,19–20"
+  },
+  {
+    "id": "q072",
+    "difficulty": 5,
+    "text": "In welcher Sprache wurde das Neue Testament ursprünglich verfasst?",
+    "options": [
+      "Latein",
+      "Hebräisch",
+      "Aramäisch",
+      "Griechisch"
+    ],
+    "correct": 3,
+    "reference": "Johannes 1,1 (Griechisch: λόγος)"
+  },
+  {
+    "id": "q073",
+    "difficulty": 5,
+    "text": "Was ist „Sola Scriptura\"?",
+    "options": [
+      "Heil durch Glauben allein",
+      "Die Schrift allein als Autorität",
+      "Allein durch Gnade",
+      "Allein Gottes Ruhm"
+    ],
+    "correct": 1,
+    "reference": "2. Timotheus 3,16"
+  },
+  {
+    "id": "q074",
+    "difficulty": 6,
+    "text": "Wer war Melchisedek?",
+    "options": [
+      "Ein Prophet zur Zeit Moses",
+      "König von Salem und Priester Gottes des Höchsten",
+      "Ein Engel",
+      "Ein philistinischer König"
+    ],
+    "correct": 1,
+    "reference": "1. Mose 14,18"
+  },
+  {
+    "id": "q075",
+    "difficulty": 5,
+    "text": "Was bedeutet die Zahl 7 in der Bibel?",
+    "options": [
+      "Zahl der Vollkommenheit und Vollendung",
+      "Zahl der Stämme",
+      "Zahl der Patriarchen",
+      "Zahl der Engel"
+    ],
+    "correct": 0,
+    "reference": "1. Mose 2,2"
+  }
+]

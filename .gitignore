@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build output
+client/dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Secrets (PHP) — never commit; copy secrets.php.example to secrets.php
+client/public/secrets.php
+
+# Editor
+.DS_Store
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*

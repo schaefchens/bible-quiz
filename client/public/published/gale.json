@@ -1,0 +1,32 @@
+{
+  "id": "gale",
+  "name": "Letter to the Galatians",
+  "description": "A quiz on the Letter to the Galatians — faith, freedom, the Spirit, and life in Christ. 21 questions across 6 difficulty levels.",
+  "author": "Bible Millionaire Team",
+  "version": "1.0",
+  "language": "en",
+  "isPublished": true,
+  "questions": [
+    {"id":"ga01","difficulty":1,"text":"Who wrote the letter to the Galatians?","options":["Luke","Peter","Paul","James"],"correct":2,"reference":"Galatians 1:1"},
+    {"id":"ga02","difficulty":1,"text":"What is the first fruit of the Spirit listed in Galatians 5:22?","options":["Peace","Joy","Love","Patience"],"correct":2,"reference":"Galatians 5:22"},
+    {"id":"ga03","difficulty":1,"text":"\"Whatever a man sows, that he will also …\" — how does Galatians 6:7 complete this?","options":["find","receive","reap","lose"],"correct":2,"reference":"Galatians 6:7"},
+    {"id":"ga04","difficulty":1,"text":"For what did Christ set us free, according to Galatians 5:1?","options":["For the law","For freedom","For service","For wealth"],"correct":1,"reference":"Galatians 5:1"},
+    {"id":"ga05","difficulty":2,"text":"Who believed God, and it was counted to him as righteousness, according to Galatians 3:6?","options":["Moses","David","Abraham","Isaac"],"correct":2,"reference":"Galatians 3:6"},
+    {"id":"ga06","difficulty":2,"text":"How should believers restore someone caught in a sin, according to Galatians 6:1?","options":["Strictly","Gently","Publicly","By excommunication"],"correct":1,"reference":"Galatians 6:1"},
+    {"id":"ga07","difficulty":2,"text":"What does Paul say avails anything in Christ Jesus in Galatians 5:6?","options":["Circumcision","Uncircumcision","Faith working through love","Keeping the law"],"correct":2,"reference":"Galatians 5:6"},
+    {"id":"ga08","difficulty":2,"text":"To what were the Galatians called, yet warned not to use as an opportunity for the flesh? (Galatians 5:13)","options":["Holiness","Freedom","Obedience","Prayer"],"correct":1,"reference":"Galatians 5:13"},
+    {"id":"ga09","difficulty":3,"text":"How many years before the law was the promise given to Abraham, according to Galatians 3:17?","options":["300","400","430","450"],"correct":2,"reference":"Galatians 3:17"},
+    {"id":"ga10","difficulty":3,"text":"Which apostle did Paul oppose to his face in Antioch, according to Galatians 2:11?","options":["James","John","Barnabas","Cephas / Peter"],"correct":3,"reference":"Galatians 2:11"},
+    {"id":"ga11","difficulty":3,"text":"What role did the law serve until Christ came, according to Galatians 3:24?","options":["Savior","Guardian / Tutor","Judge","Priest"],"correct":1,"reference":"Galatians 3:24"},
+    {"id":"ga12","difficulty":3,"text":"In Galatians 2:20 Paul says \"I have been crucified with Christ.\" Who now lives in him?","options":["The Spirit","God the Father","Christ","The law"],"correct":2,"reference":"Galatians 2:20"},
+    {"id":"ga13","difficulty":4,"text":"In the allegory of Galatians 4, Hagar and Sarah represent two covenants. Which does Hagar represent?","options":["The new covenant","The covenant of promise","The Sinai covenant","The Abrahamic covenant"],"correct":2,"reference":"Galatians 4:22–25"},
+    {"id":"ga14","difficulty":4,"text":"After how many years did Paul go up to Jerusalem again, according to Galatians 2:1?","options":["7","10","14","21"],"correct":2,"reference":"Galatians 2:1"},
+    {"id":"ga15","difficulty":4,"text":"According to Galatians 3:28, what distinctions are abolished in Christ?","options":["Jew and Gentile only","Male and female only","Jew/Gentile, slave/free, male/female","Rich/poor and old/young"],"correct":2,"reference":"Galatians 3:28"},
+    {"id":"ga16","difficulty":4,"text":"What would the Galatians have done for Paul, according to Galatians 4:15?","options":["Died for him","Plucked out their eyes and given them to him","Given all their possessions","Followed him anywhere"],"correct":1,"reference":"Galatians 4:15"},
+    {"id":"ga17","difficulty":5,"text":"How did Paul receive the gospel he preached, according to Galatians 1:11–12?","options":["From the Jerusalem apostles","Through human teaching","By revelation of Jesus Christ","From the Old Testament"],"correct":2,"reference":"Galatians 1:11–12"},
+    {"id":"ga18","difficulty":5,"text":"What does Paul rebuke the Galatians for observing in Galatians 4:10?","options":["Dietary laws","Days, months, seasons, and years","Temple rituals","Circumcision rites"],"correct":1,"reference":"Galatians 4:10"},
+    {"id":"ga19","difficulty":5,"text":"According to Galatians 1:13–14, what did Paul do before his conversion?","options":["Preached in synagogues","Persecuted the church and tried to destroy it","Led a rebellion","Studied in Rome"],"correct":1,"reference":"Galatians 1:13–14"},
+    {"id":"ga20","difficulty":6,"text":"In what alone does Paul boast, according to Galatians 6:14?","options":["His apostleship","The law","The cross of Christ","His sufferings"],"correct":2,"reference":"Galatians 6:14"},
+    {"id":"ga21","difficulty":6,"text":"Galatians 3:13 quotes an Old Testament verse: \"Cursed is everyone who is hanged on a tree.\" Where does this come from?","options":["Leviticus 26:29","Numbers 25:4","Deuteronomy 21:23","Isaiah 53:4"],"correct":2,"reference":"Galatians 3:13; Deuteronomy 21:23"}
+  ]
+}

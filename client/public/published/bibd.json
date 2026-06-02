@@ -1,0 +1,32 @@
+{
+  "id": "bibd",
+  "name": "Bibel-Grundwissen",
+  "description": "Ein Quiz für alle – 21 Fragen zu den bekanntesten Personen, Geschichten und Fakten der Bibel. Keine Vorkenntnisse erforderlich.",
+  "author": "Bibel-Millionär Team",
+  "version": "1.0",
+  "language": "de",
+  "isPublished": true,
+  "questions": [
+    {"id":"bb01","difficulty":1,"text":"Wer baute ein großes Boot (Arche), um eine gewaltige Sintflut zu überstehen?","options":["Mose","Abraham","Noah","Elija"],"correct":2,"reference":"1. Mose 6–7"},
+    {"id":"bb02","difficulty":1,"text":"In welcher Stadt wurde Jesus geboren?","options":["Jerusalem","Nazareth","Bethlehem","Jericho"],"correct":2,"reference":"Lukas 2,4–7"},
+    {"id":"bb03","difficulty":1,"text":"Was ist das allererste Buch der Bibel?","options":["2. Mose","1. Mose (Genesis)","Psalmen","Matthäus"],"correct":1,"reference":"1. Mose 1,1"},
+    {"id":"bb04","difficulty":1,"text":"Wer war laut der Bibel der erste Mensch, den Gott erschuf?","options":["Kain","Abel","Noah","Adam"],"correct":3,"reference":"1. Mose 2,7"},
+    {"id":"bb05","difficulty":2,"text":"Was benutzte der junge David, um den Riesen Goliath zu besiegen?","options":["Ein Schwert","Pfeil und Bogen","Eine Schleuder und einen Stein","Seine bloßen Hände"],"correct":2,"reference":"1. Samuel 17,49–50"},
+    {"id":"bb06","difficulty":2,"text":"Wer verriet Jesus für dreißig Silberstücke?","options":["Petrus","Judas Iskariot","Pontius Pilatus","Herodes"],"correct":1,"reference":"Matthäus 26,15"},
+    {"id":"bb07","difficulty":2,"text":"Wie viele Jünger wählte Jesus?","options":["7","10","12","40"],"correct":2,"reference":"Matthäus 10,1–4"},
+    {"id":"bb08","difficulty":2,"text":"Wie hieß die erste Frau in der Bibel?","options":["Sara","Rahel","Maria","Eva"],"correct":3,"reference":"1. Mose 3,20"},
+    {"id":"bb09","difficulty":3,"text":"In welchem Garten lebten Adam und Eva vor dem Sündenfall?","options":["Garten Gethsemane","Garten Eden","Garten des Paradieses","Garten Kanaan"],"correct":1,"reference":"1. Mose 2,8"},
+    {"id":"bb10","difficulty":3,"text":"Welcher Prophet wurde von einem großen Fisch verschluckt?","options":["Elija","Jona","Jesaja","Amos"],"correct":1,"reference":"Jona 1,17"},
+    {"id":"bb11","difficulty":3,"text":"Welches Gewässer teilte Mose, damit die Israeliten auf trockenem Boden hindurchgehen konnten?","options":["Den Jordan","Das Tote Meer","Das Mittelmeer","Das Schilfmeer (Rote Meer)"],"correct":3,"reference":"2. Mose 14,21"},
+    {"id":"bb12","difficulty":3,"text":"Worauf wurden die Zehn Gebote geschrieben?","options":["Auf Papyrus","Auf Tontafeln","Auf Steintafeln","Auf Pergament"],"correct":2,"reference":"2. Mose 31,18"},
+    {"id":"bb13","difficulty":4,"text":"Wie viele Tage und Nächte regnete es während der Sintflut?","options":["7","20","40","100"],"correct":2,"reference":"1. Mose 7,12"},
+    {"id":"bb14","difficulty":4,"text":"Wessen Stadtmauern fielen, nachdem die Israeliten die Stadt umrundet hatten?","options":["Jerusalem","Babylon","Jericho","Ninive"],"correct":2,"reference":"Josua 6,20"},
+    {"id":"bb15","difficulty":4,"text":"Welcher Jünger verleugnete Jesus dreimal, bevor der Hahn krähte?","options":["Jakobus","Johannes","Thomas","Petrus"],"correct":3,"reference":"Matthäus 26,34.75"},
+    {"id":"bb16","difficulty":4,"text":"Wer war die irdische Mutter Jesu?","options":["Marta","Elisabeth","Maria","Rut"],"correct":2,"reference":"Lukas 1,30–31"},
+    {"id":"bb17","difficulty":5,"text":"Wie viele Bücher enthält die protestantische Bibel?","options":["39","56","66","73"],"correct":2,"reference":"Allgemeinwissen"},
+    {"id":"bb18","difficulty":5,"text":"In welcher Sprache wurde das Neue Testament ursprünglich verfasst?","options":["Latein","Hebräisch","Aramäisch","Griechisch"],"correct":3,"reference":"Allgemeinwissen"},
+    {"id":"bb19","difficulty":5,"text":"Welcher Prophet wurde in einem feurigen Wagen in den Himmel aufgenommen?","options":["Mose","Henoch","Elija","Jesaja"],"correct":2,"reference":"2. Könige 2,11"},
+    {"id":"bb20","difficulty":6,"text":"Um welche Gabe bat der junge König Salomo Gott vor allem anderen?","options":["Langes Leben","Reichtum","Weisheit","Sieg über seine Feinde"],"correct":2,"reference":"1. Könige 3,9–12"},
+    {"id":"bb21","difficulty":6,"text":"Wie hießen Noahs drei Söhne?","options":["Kain, Abel und Set","Sem, Ham und Jafet","Ruben, Simeon und Levi","Ismael, Isaak und Esau"],"correct":1,"reference":"1. Mose 5,32"}
+  ]
+}

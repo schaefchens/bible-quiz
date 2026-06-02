@@ -1,0 +1,32 @@
+{
+  "id": "gald",
+  "name": "Der Galaterbrief",
+  "description": "Ein Quiz über den Galaterbrief – Glaube, Freiheit, der Geist und das Leben in Christus. 21 Fragen über 6 Schwierigkeitsstufen.",
+  "author": "Bibel-Millionär Team",
+  "version": "1.0",
+  "language": "de",
+  "isPublished": true,
+  "questions": [
+    {"id":"ga01","difficulty":1,"text":"Wer schrieb den Brief an die Galater?","options":["Lukas","Petrus","Paulus","Jakobus"],"correct":2,"reference":"Galater 1,1"},
+    {"id":"ga02","difficulty":1,"text":"Welche ist die erste Frucht des Geistes, die in Galater 5,22 aufgeführt wird?","options":["Frieden","Freude","Liebe","Geduld"],"correct":2,"reference":"Galater 5,22"},
+    {"id":"ga03","difficulty":1,"text":"„Was der Mensch sät, das wird er auch …” – wie lautet Galater 6,7?","options":["finden","empfangen","ernten","verlieren"],"correct":2,"reference":"Galater 6,7"},
+    {"id":"ga04","difficulty":1,"text":"Wofür hat uns Christus laut Galater 5,1 befreit?","options":["Für das Gesetz","Für die Freiheit","Für den Dienst","Für den Reichtum"],"correct":1,"reference":"Galater 5,1"},
+    {"id":"ga05","difficulty":2,"text":"Wem wurde laut Galater 3,6 der Glaube zur Gerechtigkeit gerechnet?","options":["Mose","David","Abraham","Isaak"],"correct":2,"reference":"Galater 3,6"},
+    {"id":"ga06","difficulty":2,"text":"Wie sollen Glaubende jemanden wiederherstellen, der in einer Sünde ertappt wird? (Galater 6,1)","options":["Streng","Sanft","Öffentlich","Durch Ausschluss"],"correct":1,"reference":"Galater 6,1"},
+    {"id":"ga07","difficulty":2,"text":"Was gilt in Christus Jesus laut Galater 5,6 als das Entscheidende?","options":["Beschneidung","Unbeschnittenheit","Glaube, der durch Liebe wirkt","Gesetzeserfüllung"],"correct":2,"reference":"Galater 5,6"},
+    {"id":"ga08","difficulty":2,"text":"Wozu waren die Galater berufen, sollten es aber nicht als Gelegenheit für das Fleisch nutzen? (Galater 5,13)","options":["Heiligkeit","Freiheit","Gehorsam","Gebet"],"correct":1,"reference":"Galater 5,13"},
+    {"id":"ga09","difficulty":3,"text":"Wie viele Jahre vor dem Gesetz wurde Abraham die Verheißung gegeben? (Galater 3,17)","options":["300","400","430","450"],"correct":2,"reference":"Galater 3,17"},
+    {"id":"ga10","difficulty":3,"text":"Welchem Apostel widerstand Paulus offen in Antiochia? (Galater 2,11)","options":["Jakobus","Johannes","Barnabas","Kephas / Petrus"],"correct":3,"reference":"Galater 2,11"},
+    {"id":"ga11","difficulty":3,"text":"Welche Rolle hatte das Gesetz bis Christus kam, laut Galater 3,24?","options":["Retter","Erzieher / Zuchtmeister","Richter","Priester"],"correct":1,"reference":"Galater 3,24"},
+    {"id":"ga12","difficulty":3,"text":"Paulus sagt in Galater 2,20: „Ich bin mit Christus gekreuzigt.” Wer lebt nun in ihm?","options":["Der Geist","Gott der Vater","Christus","Das Gesetz"],"correct":2,"reference":"Galater 2,20"},
+    {"id":"ga13","difficulty":4,"text":"In der Allegorie von Galater 4 stehen Hagar und Sara für zwei Bünde. Wofür steht Hagar?","options":["Den neuen Bund","Den Verheißungsbund","Den Sinai-Bund","Den Bund mit Abraham"],"correct":2,"reference":"Galater 4,22–25"},
+    {"id":"ga14","difficulty":4,"text":"Nach wie vielen Jahren reiste Paulus laut Galater 2,1 erneut nach Jerusalem?","options":["7","10","14","21"],"correct":2,"reference":"Galater 2,1"},
+    {"id":"ga15","difficulty":4,"text":"Welche Unterschiede sind laut Galater 3,28 in Christus aufgehoben?","options":["Nur Jude und Grieche","Nur Mann und Frau","Jude/Grieche, Sklave/Freier, Mann/Frau","Reich/Arm und Alt/Jung"],"correct":2,"reference":"Galater 3,28"},
+    {"id":"ga16","difficulty":4,"text":"Was hätten die Galater laut Galater 4,15 für Paulus getan?","options":["Für ihn gestorben","Sich die Augen ausgerissen und ihm gegeben","All ihren Besitz gegeben","Ihn überall hin begleitet"],"correct":1,"reference":"Galater 4,15"},
+    {"id":"ga17","difficulty":5,"text":"Wie empfing Paulus das Evangelium, das er verkündigte, laut Galater 1,11–12?","options":["Von den Aposteln in Jerusalem","Durch menschliche Lehre","Durch Offenbarung Jesu Christi","Aus dem Alten Testament"],"correct":2,"reference":"Galater 1,11–12"},
+    {"id":"ga18","difficulty":5,"text":"Was kritisiert Paulus an den Galatern in Galater 4,10?","options":["Speisegesetze","Tage, Monate, Zeiten und Jahre","Tempelrituale","Beschneidungsriten"],"correct":1,"reference":"Galater 4,10"},
+    {"id":"ga19","difficulty":5,"text":"Was tat Paulus laut Galater 1,13–14 vor seiner Bekehrung?","options":["Er predigte in Synagogen","Er verfolgte die Gemeinde und versuchte sie zu vernichten","Er führte einen Aufstand an","Er studierte in Rom"],"correct":1,"reference":"Galater 1,13–14"},
+    {"id":"ga20","difficulty":6,"text":"Worüber rühmt sich Paulus in Galater 6,14 allein?","options":["Über seinen Apostolat","Über das Gesetz","Über das Kreuz Christi","Über sein Leiden"],"correct":2,"reference":"Galater 6,14"},
+    {"id":"ga21","difficulty":6,"text":"Galater 3,13 zitiert einen alttestamentlichen Vers über den, der „am Holz hängt, ist verflucht”. Woher stammt dieses Zitat?","options":["3. Mose 26,29","4. Mose 25,4","5. Mose 21,23","Jesaja 53,4"],"correct":2,"reference":"Galater 3,13; 5. Mose 21,23"}
+  ]
+}
