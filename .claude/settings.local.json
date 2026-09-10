@@ -1,10 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir -p /Users/css/Projects/scharfmedia/christ-biblionair/server/data)",
-      "Bash(mkdir -p /Users/css/Projects/scharfmedia/christ-biblionair/client/public/icons)",
-      "Bash(mkdir -p /Users/css/Projects/scharfmedia/christ-biblionair/client/src/components)",
-      "Bash(mkdir -p /Users/css/Projects/scharfmedia/christ-biblionair/client/src/locales)",
+      "Bash(mkdir -p /Users/css/Projects/schaefchens/bible-quiz-game/server/data)",
+      "Bash(mkdir -p /Users/css/Projects/schaefchens/bible-quiz-game/client/public/icons)",
+      "Bash(mkdir -p /Users/css/Projects/schaefchens/bible-quiz-game/client/src/components)",
+      "Bash(mkdir -p /Users/css/Projects/schaefchens/bible-quiz-game/client/src/locales)",
       "Bash(npm install *)",
       "Bash(node server.js)",
       "Bash(curl -s \"http://localhost:3001/api/quiz?lang=de\")",
@@ -39,11 +39,11 @@
       "Bash(node *)",
       "WebFetch(domain:www.bibleserver.com)",
       "Bash(echo \"Exit: $?\")",
-      "Bash(sed -i '' '/id: .q061/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/scharfmedia/christ-biblionair/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q062/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/scharfmedia/christ-biblionair/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q064/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/scharfmedia/christ-biblionair/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q066/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/scharfmedia/christ-biblionair/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q074/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/scharfmedia/christ-biblionair/server/data/questions.js)"
+      "Bash(sed -i '' '/id: .q061/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
+      "Bash(sed -i '' '/id: .q062/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
+      "Bash(sed -i '' '/id: .q064/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
+      "Bash(sed -i '' '/id: .q066/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
+      "Bash(sed -i '' '/id: .q074/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)"
     ]
   }
 }
