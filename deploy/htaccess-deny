@@ -1,0 +1,7 @@
+# Server-side state only — never served over HTTP.
+#
+# The parent /api/.htaccess already denies this directory; this file keeps it
+# denied even if that one is ever replaced by something laxer. questions.php
+# writes an equivalent file into qcache/ on its own for the same reason.
+
+Require all denied

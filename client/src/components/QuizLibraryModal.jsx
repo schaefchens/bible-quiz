@@ -221,12 +221,10 @@ export default function QuizLibraryModal({ onClose, onSelect, selectedQuizId, re
 
     (async () => {
       try {
-        // Primary: configured registry URL
-        const data = await tryFetch(registryUrl).catch(async () => {
-          // Fallback: local Node API (useful when quizzes.php not yet deployed)
-          if (registryUrl !== '/api/quizzes') return tryFetch('/api/quizzes');
-          throw new Error('unavailable');
-        });
+        // The configured registry URL is the only one we try: dev proxies it to
+        // the Node server and production serves it from PHP, so a second guess
+        // would only ever be a URL that works in neither.
+        const data = await tryFetch(registryUrl);
         setRemoteQuizzes(Array.isArray(data) ? data : []);
       } catch {
         setRemoteQuizzes([]);

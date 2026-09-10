@@ -6,13 +6,10 @@ import { execSync } from 'child_process';
 let buildRev = 'dev';
 try { buildRev = execSync('git rev-parse --short HEAD').toString().trim(); } catch {}
 
-// Production deploys to /quiz/; local dev runs at root /.
-// Set VITE_BASE=/other/ to override for a different subpath.
-const base = process.env.VITE_BASE
-  ?? (process.env.NODE_ENV === 'production' ? '/quiz/' : '/');
-
 export default defineConfig({
-  base,
+  // The app owns the root of its own subdomain, in dev and in production alike.
+  // (It used to build to /quiz/ on the retired komm-folge-mir-nach.de host.)
+  base: '/',
   define: {
     __BUILD_REV__: JSON.stringify(buildRev),
   },
@@ -27,6 +24,10 @@ export default defineConfig({
         skipWaiting: true,
         clientsClaim: true,
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json,woff2}'],
+        // public/ carries the PHP backend's own files into dist, but only the
+        // frontend half is uploaded to the web root. Precaching the rest would
+        // point the service worker at URLs that 404 and fail its install.
+        globIgnores: ['published/**', 'qcache/**'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -47,7 +48,7 @@ export default defineConfig({
             },
           },
           {
-            urlPattern: /\/api\/quiz/,
+            urlPattern: /\/api\/(questions|quizzes)\.php/,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-quiz-cache',
@@ -61,9 +62,28 @@ export default defineConfig({
   ],
   server: {
     proxy: {
+      // The client always calls /api/<file>.php (see API_BASE in App.jsx). In
+      // production that is the real PHP folder; here we map those same URLs onto
+      // the Node dev server's routes, so dev and production never diverge.
       '/api': {
         target: 'http://localhost:3001',
         changeOrigin: true,
+        rewrite: (url) => {
+          const [path, search = ''] = url.split('?');
+          const params = new URLSearchParams(search);
+
+          if (path.endsWith('/questions.php')) {
+            const qs = params.toString();
+            return '/api/quiz' + (qs ? `?${qs}` : '');
+          }
+          if (path.endsWith('/quizzes.php')) {
+            const id = params.get('download');
+            return id
+              ? `/api/quiz-download/${encodeURIComponent(id)}`
+              : '/api/quizzes';
+          }
+          return url; // already a native Node route
+        },
       },
     },
   },

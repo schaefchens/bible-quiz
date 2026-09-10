@@ -24,18 +24,30 @@ function writeWinnings(quizId, amount) {
 }
 
 export const DEFAULT_BACKEND_URL = 'questions_{lang}.json'; // local static file (offline fallback)
-const PHP_BACKEND_URL            = 'https://komm-folge-mir-nach.de/quiz/questions.php?lang={lang}'; // AI generator (online default)
-const PHP_REGISTRY_URL           = 'https://komm-folge-mir-nach.de/quiz/quizzes.php';
+// Every backend call goes through one prefix, in every target:
+//   web prod  → /api/ on the deploy host (the htaccess-protected PHP folder)
+//   dev       → /api/ proxied to the Node dev server (see vite.config.js)
+//   Capacitor → VITE_API_BASE, an absolute URL; a packaged app has no origin
+//               of its own to resolve a relative path against.
+const API_BASE = (import.meta.env.VITE_API_BASE || '/api/').replace(/\/?$/, '/');
 
-// Derive the quiz registry URL, mirroring the same online/offline logic as fetchQuestions.
+const PHP_BACKEND_URL            = `${API_BASE}questions.php?lang={lang}`; // AI generator (online default)
+const PHP_REGISTRY_URL           = `${API_BASE}quizzes.php`;
+
+// Backends that no longer exist. A stored value matching one of these is reset
+// to the default instead of being fetched (the old domains were retired).
+const RETIRED_BACKEND_HOSTS = ['komm-folge-mir-nach.de'];
+
+// Derive the quiz registry URL that pairs with a given questions backend.
 export function resolveRegistryUrl(backendUrl) {
   // Custom PHP backend → derive registry from the same host
   if (backendUrl && backendUrl !== DEFAULT_BACKEND_URL && backendUrl.includes('questions.php')) {
     return backendUrl.replace(/questions\.php.*$/, 'quizzes.php');
   }
-  // Default backend: online → use canonical PHP registry; offline → try local Node dev server
-  if (navigator.onLine) return PHP_REGISTRY_URL;
-  return '/api/quizzes';
+  // Default backend → canonical registry. Offline is not special-cased: the URL
+  // is the same one dev proxies to the Node server, and QuizLibraryModal already
+  // degrades to the locally cached quizzes when the fetch fails.
+  return PHP_REGISTRY_URL;
 }
 
 export function resolveUrl(template, lang) {
@@ -99,6 +111,11 @@ export default function App() {
     const stored = localStorage.getItem(BACKEND_KEY);
     // Migrate users whose stored value is the old API default
     if (!stored || stored === '/api/quiz?lang={lang}' || stored === '/questions_{lang}.json') return DEFAULT_BACKEND_URL;
+    // Migrate users pinned to a retired domain back onto the default backend
+    if (RETIRED_BACKEND_HOSTS.some((h) => stored.includes(h))) {
+      localStorage.removeItem(BACKEND_KEY);
+      return DEFAULT_BACKEND_URL;
+    }
     return stored;
   });
 

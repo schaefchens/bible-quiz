@@ -1,0 +1,11 @@
+# /assets holds Vite's content-hashed output: any change to a file produces a
+# new filename, so the old name can never serve wrong content and these are
+# safe to cache permanently.
+#
+# Deployed by scripts/deploy.sh from deploy/htaccess-assets.
+
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</IfModule>
+
+# Compression is inherited from the root .htaccess and needs nothing here.

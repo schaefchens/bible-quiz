@@ -1,0 +1,21 @@
+# PHP backend. Default-deny: of everything in this folder, only the two
+# endpoints the app actually calls over HTTP are reachable.
+#
+# Denied but still readable by PHP itself from disk (Apache authz does not
+# affect filesystem access):
+#   secrets.php     the OpenAI API key
+#   qcache/         generated question cache + regeneration history
+#   published/      user-published quizzes and their *.hash owner secrets
+#
+# Published quizzes are still downloadable by design — through
+# quizzes.php?download=<id>, which is the granted endpoint.
+#
+# Deployed by scripts/deploy.sh from deploy/htaccess-api.
+
+Options -Indexes
+
+Require all denied
+
+<FilesMatch "^(questions|quizzes)\.php$">
+  Require all granted
+</FilesMatch>

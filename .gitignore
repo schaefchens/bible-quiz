@@ -9,6 +9,9 @@ client/dist/
 .env.local
 .env.*.local
 
+# Deploy credentials (SFTP password) — never commit; see sftp.env.example
+sftp.env
+
 # Secrets (PHP) — never commit; copy secrets.php.example to secrets.php
 client/public/secrets.php
 

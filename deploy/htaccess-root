@@ -1,0 +1,31 @@
+# Web root of the built quiz app (biblequiz.games.schaefchens.de).
+#
+# Deployed by scripts/deploy.sh — edit this template in the repo, never the copy
+# on the server, or the next deploy will overwrite your change.
+
+DirectoryIndex index.html
+Options -Indexes
+
+<IfModule mod_deflate.c>
+  # text/javascript matters: that is the Content-Type this host actually sends
+  # for .js, and AddOutputFilterByType matches on the response type. Listing
+  # only application/javascript silently leaves the main bundle uncompressed
+  # (341 KB instead of 102 KB).
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml
+  AddOutputFilterByType DEFLATE text/javascript application/javascript
+  AddOutputFilterByType DEFLATE application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  # PWA entry points must always be revalidated. If a client keeps a stale
+  # index.html it boots asset hashes that this deploy has already replaced,
+  # and the app dies on a 404 it cannot recover from.
+  <FilesMatch "^(index\.html|sw\.js|registerSW\.js|manifest\.json)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Not content-hashed: read directly by the app as its offline question bank.
+  <FilesMatch "^questions_(de|en)\.json$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
