@@ -3,12 +3,23 @@ import { useTranslation } from 'react-i18next';
 import StartScreen from './components/StartScreen.jsx';
 import QuizGame from './components/QuizGame.jsx';
 import ResultScreen from './components/ResultScreen.jsx';
+import InstallPrompt from './components/InstallPrompt.jsx';
 import { useAudio } from './context/AudioContext.jsx';
 import { getSelectedQuiz, getSelectedQuizId, setSelectedQuizId, saveQuiz } from './utils/quizStorage.js';
+import { INSTALL_REQUESTED } from './utils/pwaInstall.js';
 
 const CACHE_KEY      = 'biblionaire_cached_questions';
 const BACKEND_KEY    = 'biblionaire_backend_url';
 const WINNINGS_KEY   = 'biblionaire_total_winnings'; // default (no quiz selected)
+
+// Remove specific query parameters from the address bar without reloading.
+// Surgical on purpose: ?quiz=…&install=1 is a perfectly plausible share link,
+// and wiping the whole query string would silently eat the other parameter.
+function stripQueryParams(names) {
+  const url = new URL(window.location.href);
+  names.forEach((n) => url.searchParams.delete(n));
+  history.replaceState(null, '', url.pathname + url.search + url.hash);
+}
 
 function winningsKey(quizId) {
   return quizId ? `biblionaire_winnings_${quizId}` : WINNINGS_KEY;
@@ -146,7 +157,7 @@ export default function App() {
     if (!quizId) return;
 
     // Remove param from URL immediately so it doesn't re-fire on reload
-    history.replaceState(null, '', window.location.pathname);
+    stripQueryParams(['quiz']);
 
     const regUrl = resolveRegistryUrl(backendUrl);
     (async () => {
@@ -172,6 +183,14 @@ export default function App() {
       }
     })();
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Install deep link: ?install=1 offers the PWA installer (see InstallPrompt).
+  // The intent itself was latched at module load in pwaInstall.js, so it
+  // survives both this cleanup and the service worker's first-visit reload.
+  useEffect(() => {
+    if (!INSTALL_REQUESTED) return;
+    stripQueryParams(['install']);
   }, []);
 
   const fetchQuestions = useCallback(
@@ -325,6 +344,11 @@ export default function App() {
           onPlayAgain={handlePlayAgain}
         />
       )}
+
+      {/* ?install=1 entry point. Deliberately outside the screen switch: it is
+          a global overlay and must not be torn down by whatever happens behind
+          it. Renders null unless the deep link was actually used. */}
+      <InstallPrompt />
     </div>
   );
 }

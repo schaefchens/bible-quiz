@@ -266,5 +266,22 @@
     "walkaway_title": "Walk Away",
     "walkaway_text": "You can stop after any question and take your current winnings.",
     "close": "Got it"
+  },
+  "install": {
+    "title": "Install the App",
+    "checking": "One moment – getting the installer ready",
+    "ready_text": "Install \"Who Wants to Be a Bible Millionaire?\" right on your device – then you can start the game straight from your home screen, even without internet.",
+    "button": "Install now",
+    "later": "Later",
+    "close": "Close",
+    "manual_title": "How to install the game",
+    "manual_ios": "Tap the share icon in your browser bar (bottom on iPhone, top on iPad) and choose \"Add to Home Screen\". That's it – the game will sit right next to your other apps.",
+    "manual_firefox": "Open your browser's menu and choose \"Install\" or \"Add to Home screen\". After that the game starts like a real app.",
+    "manual_safari": "In the menu bar choose \"File\" and then \"Add to Dock\" (Safari 17 and newer) – the game then runs in its own window.",
+    "manual_other": "Open your browser's menu and choose \"Install app\" or \"Add to Home screen\".",
+    "already_hint": "By the way: if you have already installed the game you will find it on your home screen – then you can simply close this window.",
+    "success_title": "Welcome home!",
+    "success_text": "The game is on your home screen now. Enjoy playing – and God bless!",
+    "success_button": "Let's go"
   }
 }

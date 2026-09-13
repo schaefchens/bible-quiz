@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { INSTALL_REQUESTED } from '../utils/pwaInstall.js';
 
 const HIDE_TIPS_KEY = 'biblionaire_hide_tips';
 let shownThisSession = false;
@@ -27,6 +28,9 @@ function pickRandomIndex() {
 
 export function shouldShowHints() {
   if (shownThisSession) return false;
+  // The ?install=1 entry point opens its own card — two stacked dialogs on
+  // arrival is one too many.
+  if (INSTALL_REQUESTED) return false;
   return localStorage.getItem(HIDE_TIPS_KEY) !== '1';
 }
 
