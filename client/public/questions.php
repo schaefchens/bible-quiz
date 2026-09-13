@@ -2,11 +2,12 @@
 /**
  * Bible Millionaire – AI Question Generator
  *
- * Generates 75 Christian Bible quiz questions (15 per difficulty level 1–5)
- * via the OpenAI API and caches the result for 24 hours.
+ * Generates 80 Christian Bible quiz questions via the OpenAI API — 15 per
+ * difficulty level 1–5, plus 5 at level 6 (the final-question tier, q076–q080)
+ * — and caches the result for 24 hours.
  *
- * Deploy this file to your web server at the same path as your quiz app.
- * Example: https://yoursite.de/quiz/questions.php?lang=de
+ * Deployed to /api/ on the web server by scripts/deploy.sh, not next to the
+ * built app. Example: https://yoursite.de/api/questions.php?lang=de
  *
  * Parameters
  *   lang    = de | en   (default: de)

@@ -17,12 +17,8 @@
       "Bash(npm run *)",
       "Bash(curl -s http://localhost:5173)",
       "Bash(npx vite *)",
-      "Bash(curl -s http://localhost:5174)",
       "Bash(python3 -c \"import sys,json; qs=json.load\\(sys.stdin\\); print\\(f'{len\\(qs\\)} questions returned'\\); diffs=[q['difficulty'] for q in qs]; print\\('Difficulties:', diffs\\)\")",
-      "Bash(curl -s \"http://localhost:5174/api/quiz?lang=de\")",
       "Bash(python3 -c ' *)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
       "Bash(curl *)",
       "Bash(node -e \"const d = JSON.parse\\(require\\('fs'\\).readFileSync\\('client/public/questions_de.json'\\)\\); console.log\\('DE count:', d.length, '| diffs:', [...new Set\\(d.map\\(q=>q.difficulty\\)\\)].sort\\(\\)\\)\")",
       "Bash(node --input-type=module)",
@@ -38,12 +34,7 @@
       "Bash(node -e \"const d=require\\('./client/public/questions_de.json'\\); console.log\\(JSON.stringify\\(d[0],null,2\\)\\)\")",
       "Bash(node *)",
       "WebFetch(domain:www.bibleserver.com)",
-      "Bash(echo \"Exit: $?\")",
-      "Bash(sed -i '' '/id: .q061/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q062/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q064/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q066/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)",
-      "Bash(sed -i '' '/id: .q074/,/difficulty: 5/{s/difficulty: 5/difficulty: 6/}' /Users/css/Projects/schaefchens/bible-quiz-game/server/data/questions.js)"
+      "Bash(echo \"Exit: $?\")"
     ]
   }
 }
