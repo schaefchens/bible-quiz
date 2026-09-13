@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './i18n.js';
+// Adopts the beforeinstallprompt event caught by the inline script in
+// index.html, and latches ?install=1 before anything can rewrite the URL.
+import './utils/pwaInstall.js';
 import './index.css';
 import App from './App.jsx';
 import { AudioProvider } from './context/AudioContext.jsx';

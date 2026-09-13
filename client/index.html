@@ -10,6 +10,23 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Bibel-Mio" />
     <link rel="manifest" href="/manifest.json" />
+
+    <!-- Chrome fires `beforeinstallprompt` exactly once, whenever it decides the
+         app is installable — which can be before the deferred module bundle at
+         the bottom of this file has run a single line. This is the only script
+         guaranteed to execute before that, so it does the catching;
+         src/utils/pwaInstall.js adopts whatever gets parked here.
+         preventDefault() keeps the browser's own install promo out of the way —
+         we drive the dialog ourselves (see the ?install=1 deep link).
+         Handy while debugging: `window.__installPromptEvent` in the console
+         tells you straight away whether this device thinks we are installable. -->
+    <script>
+      window.__installPromptEvent = null;
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        window.__installPromptEvent = e;
+      });
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

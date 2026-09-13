@@ -266,5 +266,22 @@
     "walkaway_title": "Aufhören & Geld nehmen",
     "walkaway_text": "Du kannst nach jeder Frage aussteigen und deinen aktuellen Gewinn mitnehmen.",
     "close": "Verstanden"
+  },
+  "install": {
+    "title": "App installieren",
+    "checking": "Moment – wir bereiten die Installation vor",
+    "ready_text": "Installiere „Wer wird Bibel-Millionär?“ direkt auf deinem Gerät – danach startest du das Spiel vom Startbildschirm aus, sogar ganz ohne Internet.",
+    "button": "Jetzt installieren",
+    "later": "Später",
+    "close": "Schließen",
+    "manual_title": "So installierst du das Spiel",
+    "manual_ios": "Tippe in der Browser-Leiste auf das Teilen-Symbol (unten auf dem iPhone, oben auf dem iPad) und wähle „Zum Home-Bildschirm“. Fertig – das Spiel liegt dann neben deinen anderen Apps.",
+    "manual_firefox": "Öffne das Menü deines Browsers und wähle „Installieren“ bzw. „Zum Startbildschirm hinzufügen“. Danach startet das Spiel wie eine echte App.",
+    "manual_safari": "Klicke in der Menüleiste auf „Ablage“ und wähle „Zum Dock hinzufügen“ (ab Safari 17) – dann läuft das Spiel in einem eigenen Fenster.",
+    "manual_other": "Öffne das Menü deines Browsers und wähle „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.",
+    "already_hint": "Übrigens: Wenn du das Spiel schon installiert hast, findest du es bereits auf deinem Startbildschirm – dann kannst du dieses Fenster einfach schließen.",
+    "success_title": "Willkommen daheim!",
+    "success_text": "Das Spiel liegt jetzt auf deinem Startbildschirm. Viel Freude beim Spielen – und Gottes Segen!",
+    "success_button": "Los geht\u2019s"
   }
 }
