@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Who Wants to Be a Bible Millionaire?",
-    "subtitle": "The Christian Quiz Game"
+    "title": "Bible Quiz",
+    "subtitle": "Who Wants to Be a Bible Millionaire?"
   },
   "start": {
     "welcome": "Welcome to the Christian Quiz",
@@ -270,7 +270,7 @@
   "install": {
     "title": "Install the App",
     "checking": "One moment – getting the installer ready",
-    "ready_text": "Install \"Who Wants to Be a Bible Millionaire?\" right on your device – then you can start the game straight from your home screen, even without internet.",
+    "ready_text": "Install \"Bible Quiz\" right on your device – then you can start the game straight from your home screen, even without internet.",
     "button": "Install now",
     "later": "Later",
     "close": "Close",

@@ -1,7 +1,7 @@
 {
   "app": {
-    "title": "Wer wird Bibel-Millionär?",
-    "subtitle": "Das christliche Quiz-Spiel"
+    "title": "Bibel Quiz",
+    "subtitle": "Wer wird Bibel-Millionär?"
   },
   "start": {
     "welcome": "Willkommen zum christlichen Quiz",
@@ -270,7 +270,7 @@
   "install": {
     "title": "App installieren",
     "checking": "Moment – wir bereiten die Installation vor",
-    "ready_text": "Installiere „Wer wird Bibel-Millionär?“ direkt auf deinem Gerät – danach startest du das Spiel vom Startbildschirm aus, sogar ganz ohne Internet.",
+    "ready_text": "Installiere „Bibel Quiz“ direkt auf deinem Gerät – danach startest du das Spiel vom Startbildschirm aus, sogar ganz ohne Internet.",
     "button": "Jetzt installieren",
     "later": "Später",
     "close": "Schließen",
