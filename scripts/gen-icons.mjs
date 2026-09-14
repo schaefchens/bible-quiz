@@ -1,27 +1,38 @@
 /**
- * Generates PWA icons and favicon using only Node built-ins (no npm deps).
+ * Generates the PWA icons and the favicon from logo-design.png,
+ * using only Node built-ins (no npm deps).
  * Run: node scripts/gen-icons.mjs
  *
+ * Source:
+ *   logo-design.png                            (repo root, 1254×1254 RGBA)
+ *
  * Outputs:
+ *   client/public/icons/icon-192.png           (purpose: any)
+ *   client/public/icons/icon-512.png           (purpose: any)
+ *   client/public/icons/icon-maskable-512.png  (purpose: maskable, full-bleed)
+ *   client/public/icons/apple-touch-icon.png   (180×180, opaque — iOS shows
+ *                                               transparency as black)
  *   client/public/favicon.svg
- *   client/public/icons/icon-192.png
- *   client/public/icons/icon-512.png
- *   client/public/icons/apple-touch-icon.png   (180×180)
+ *
+ * The artwork is drawn as a macOS-style tile: a rounded square floating on a
+ * transparent canvas with a drop shadow. Browsers and launchers draw their own
+ * shadow and their own mask, so every step below works from the tile's alpha
+ * bounding box and throws the shadow margin away.
  */
-import { deflateSync }       from 'node:zlib';
-import { writeFileSync, mkdirSync } from 'node:fs';
-import { join, dirname }     from 'node:path';
-import { fileURLToPath }     from 'node:url';
+import { deflateSync, inflateSync }  from 'node:zlib';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { join, dirname }             from 'node:path';
+import { fileURLToPath }             from 'node:url';
 
-const ROOT    = join(dirname(fileURLToPath(import.meta.url)), '..');
-const ICONS   = join(ROOT, 'client', 'public', 'icons');
-const PUBLIC  = join(ROOT, 'client', 'public');
+const ROOT   = join(dirname(fileURLToPath(import.meta.url)), '..');
+const SOURCE = join(ROOT, 'logo-design.png');
+const PUBLIC = join(ROOT, 'client', 'public');
+const ICONS  = join(PUBLIC, 'icons');
 mkdirSync(ICONS, { recursive: true });
 
-// ─── colours ────────────────────────────────────────────────────────────────
-const BG   = [10,  15,  30 ];   // #0a0f1e  brand-dark navy
-const GOLD = [212, 175, 55 ];   // #d4af37  brand-gold
-const LITE = [240, 192, 64 ];   // #f0c040  brand-gold-light (glow centre)
+// Maskable icons are cropped by the launcher to whatever shape it likes; only
+// the middle 80% is guaranteed to survive. https://w3c.github.io/manifest/#icon-masks
+const SAFE_ZONE = 0.8;
 
 // ─── CRC32 (required by PNG chunk format) ───────────────────────────────────
 const CRC_TABLE = (() => {
@@ -47,24 +58,158 @@ function pngChunk(type, data) {
   return Buffer.concat([len, tb, data, crc]);
 }
 
-// ─── PNG encoder ────────────────────────────────────────────────────────────
-function makePNG(size, pixelFn) {
-  // scanline: 1 filter byte + size*4 RGBA bytes
-  const stride = 1 + size * 4;
-  const raw    = Buffer.alloc(size * stride);
+// ─── Images ─────────────────────────────────────────────────────────────────
+// One shape everywhere: { w, h, data } with data as straight (un-premultiplied)
+// RGBA bytes, row-major.
 
-  for (let y = 0; y < size; y++) {
-    raw[y * stride] = 0;                       // filter: None
-    for (let x = 0; x < size; x++) {
-      const [r, g, b, a = 255] = pixelFn(x, y, size);
-      const i = y * stride + 1 + x * 4;
-      raw[i] = r; raw[i+1] = g; raw[i+2] = b; raw[i+3] = a;
+function image(w, h, fill = [0, 0, 0, 0]) {
+  const data = Buffer.alloc(w * h * 4);
+  for (let i = 0; i < data.length; i += 4) {
+    data[i] = fill[0]; data[i+1] = fill[1]; data[i+2] = fill[2]; data[i+3] = fill[3];
+  }
+  return { w, h, data };
+}
+
+// ─── PNG decoder (8-bit, non-interlaced) ────────────────────────────────────
+function decodePNG(buf) {
+  if (buf.readUInt32BE(0) !== 0x89504E47) throw new Error('not a PNG');
+
+  let off = 8, ihdr = null;
+  const idat = [];
+  while (off + 8 <= buf.length) {
+    const len  = buf.readUInt32BE(off);
+    const type = buf.toString('ascii', off + 4, off + 8);
+    const data = buf.subarray(off + 8, off + 8 + len);
+    if (type === 'IHDR') {
+      ihdr = { w: data.readUInt32BE(0), h: data.readUInt32BE(4),
+               depth: data[8], colour: data[9], interlace: data[12] };
+    } else if (type === 'IDAT') {
+      idat.push(data);
+    } else if (type === 'IEND') break;
+    off += 12 + len;
+  }
+  if (!ihdr) throw new Error('PNG has no IHDR');
+
+  const channels = { 0: 1, 2: 3, 4: 2, 6: 4 }[ihdr.colour];
+  if (!channels || ihdr.depth !== 8 || ihdr.interlace !== 0) {
+    throw new Error(`unsupported PNG: depth ${ihdr.depth}, colour type ${ihdr.colour}, ` +
+                    `interlace ${ihdr.interlace} (need 8-bit, non-interlaced, non-palette)`);
+  }
+
+  const { w, h } = ihdr;
+  const bpp    = channels;             // bytes per pixel, depth is always 8 here
+  const stride = w * bpp;
+  const raw    = inflateSync(Buffer.concat(idat));
+  const px     = Buffer.alloc(h * stride);
+
+  // Undo the per-scanline filter (PNG spec §9).
+  let p = 0;
+  for (let y = 0; y < h; y++) {
+    const filter = raw[p++];
+    const line   = raw.subarray(p, p + stride); p += stride;
+    const cur    = px.subarray(y * stride, (y + 1) * stride);
+    const prev   = y ? px.subarray((y - 1) * stride, y * stride) : null;
+    for (let i = 0; i < stride; i++) {
+      const a = i >= bpp ? cur[i - bpp] : 0;                  // left
+      const b = prev ? prev[i] : 0;                           // up
+      const c = prev && i >= bpp ? prev[i - bpp] : 0;         // up-left
+      let v = line[i];
+      switch (filter) {
+        case 0: break;
+        case 1: v += a; break;
+        case 2: v += b; break;
+        case 3: v += (a + b) >> 1; break;
+        case 4: {                                             // Paeth
+          const pa = Math.abs(b - c), pb = Math.abs(a - c), pc = Math.abs(a + b - 2 * c);
+          v += pa <= pb && pa <= pc ? a : pb <= pc ? b : c;
+          break;
+        }
+        default: throw new Error(`unknown PNG filter ${filter} on row ${y}`);
+      }
+      cur[i] = v & 255;
     }
   }
 
+  // Normalise every colour type to straight RGBA.
+  const img = image(w, h);
+  for (let i = 0, o = 0; i < px.length; i += bpp, o += 4) {
+    if (channels >= 3) {
+      img.data[o] = px[i]; img.data[o+1] = px[i+1]; img.data[o+2] = px[i+2];
+      img.data[o+3] = channels === 4 ? px[i+3] : 255;
+    } else {
+      img.data[o] = img.data[o+1] = img.data[o+2] = px[i];
+      img.data[o+3] = channels === 2 ? px[i+1] : 255;
+    }
+  }
+  return img;
+}
+
+// ─── PNG encoder ────────────────────────────────────────────────────────────
+
+/** Apply one PNG scanline filter (spec §9.2) to a row of pixel bytes. */
+function filterRow(type, cur, prev, out, bpp) {
+  for (let i = 0; i < cur.length; i++) {
+    const a = i >= bpp ? cur[i - bpp] : 0;                  // left
+    const b = prev ? prev[i] : 0;                           // up
+    const c = prev && i >= bpp ? prev[i - bpp] : 0;         // up-left
+    let v;
+    switch (type) {
+      case 0: v = cur[i]; break;
+      case 1: v = cur[i] - a; break;
+      case 2: v = cur[i] - b; break;
+      case 3: v = cur[i] - ((a + b) >> 1); break;
+      default: {                                            // 4, Paeth
+        const pa = Math.abs(b - c), pb = Math.abs(a - c), pc = Math.abs(a + b - 2 * c);
+        v = cur[i] - (pa <= pb && pa <= pc ? a : pb <= pc ? b : c);
+      }
+    }
+    out[i] = v & 255;
+  }
+  return out;
+}
+
+function encodePNG(img) {
+  // Drop the alpha channel when nothing in the image uses it: a quarter less
+  // data to deflate, and every consumer of an opaque icon is happier for it.
+  let opaque = true;
+  for (let i = 3; i < img.data.length && opaque; i += 4) opaque = img.data[i] === 255;
+
+  const bpp      = opaque ? 3 : 4;
+  const rowBytes = img.w * bpp;
+  const pixels   = opaque ? Buffer.alloc(img.w * img.h * 3) : img.data;
+  if (opaque) {
+    for (let i = 0, o = 0; i < img.data.length; i += 4, o += 3) {
+      pixels[o] = img.data[i]; pixels[o+1] = img.data[i+1]; pixels[o+2] = img.data[i+2];
+    }
+  }
+
+  const raw       = Buffer.alloc(img.h * (1 + rowBytes));
+  const candidate = Buffer.alloc(rowBytes);
+  let prev = null;
+
+  for (let y = 0; y < img.h; y++) {
+    const cur = pixels.subarray(y * rowBytes, (y + 1) * rowBytes);
+
+    // Pick the filter per scanline by the spec's minimum-sum-of-absolute-
+    // differences heuristic. On this artwork — smooth rays and gradients — it
+    // cuts the deflated size by about a third against filter None everywhere.
+    let bestType = 0, bestScore = Infinity;
+    for (let type = 0; type <= 4; type++) {
+      filterRow(type, cur, prev, candidate, bpp);
+      let score = 0;
+      for (const v of candidate) score += v < 128 ? v : 256 - v;
+      if (score < bestScore) { bestScore = score; bestType = type; }
+    }
+
+    const at = y * (1 + rowBytes);
+    raw[at] = bestType;
+    filterRow(bestType, cur, prev, raw.subarray(at + 1, at + 1 + rowBytes), bpp);
+    prev = cur;
+  }
+
   const ihdr = Buffer.allocUnsafe(13);
-  ihdr.writeUInt32BE(size, 0); ihdr.writeUInt32BE(size, 4);
-  ihdr[8] = 8; ihdr[9] = 6; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;
+  ihdr.writeUInt32BE(img.w, 0); ihdr.writeUInt32BE(img.h, 4);
+  ihdr[8] = 8; ihdr[9] = opaque ? 2 : 6; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;
 
   return Buffer.concat([
     Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]),  // PNG signature
@@ -74,90 +219,201 @@ function makePNG(size, pixelFn) {
   ]);
 }
 
-// ─── Icon pixel function ─────────────────────────────────────────────────────
-// Latin cross centred in a navy square with a gold glow.
-// padFrac: fraction of size added as safe-zone padding on each side.
-function crossPixel(x, y, size, padFrac = 0.0) {
-  const nx = x / size;
-  const ny = y / size;
+// ─── Geometry ───────────────────────────────────────────────────────────────
 
-  // Cross geometry (normalised 0–1)
-  const barW = 0.155;                       // bar thickness
-  const pad  = 0.12 + padFrac;             // outer padding
-
-  const vx1 = 0.5 - barW / 2, vx2 = 0.5 + barW / 2;
-  const vy1 = pad,             vy2 = 1 - pad;
-  const hx1 = pad,             hx2 = 1 - pad;
-  const hy1 = 0.33 - barW / 2, hy2 = 0.33 + barW / 2;  // crossbar ~1/3 down
-
-  const inV = nx >= vx1 && nx <= vx2 && ny >= vy1 && ny <= vy2;
-  const inH = ny >= hy1 && ny <= hy2 && nx >= hx1 && nx <= hx2;
-
-  if (inV || inH) {
-    // Highlight: blend GOLD → LITE toward centre of bar
-    let ht = 0;
-    if (inV) ht = Math.max(ht, 1 - Math.abs(nx - 0.5) / (barW / 2));
-    if (inH) ht = Math.max(ht, 1 - Math.abs(ny - (hy1 + hy2) / 2) / (barW / 2));
-    ht = ht ** 2 * 0.55;
-    return [
-      Math.round(GOLD[0] + (LITE[0] - GOLD[0]) * ht),
-      Math.round(GOLD[1] + (LITE[1] - GOLD[1]) * ht),
-      Math.round(GOLD[2] + (LITE[2] - GOLD[2]) * ht),
-      255,
-    ];
+/** Tightest box holding every pixel at or above `threshold` alpha. */
+function alphaBounds(img, threshold) {
+  let x0 = img.w, y0 = img.h, x1 = -1, y1 = -1;
+  for (let y = 0; y < img.h; y++) {
+    for (let x = 0; x < img.w; x++) {
+      if (img.data[(y * img.w + x) * 4 + 3] < threshold) continue;
+      if (x < x0) x0 = x;
+      if (x > x1) x1 = x;
+      if (y < y0) y0 = y;
+      if (y > y1) y1 = y;
+    }
   }
-
-  // Distance from this pixel to the nearest cross edge (normalised)
-  function rectDist(px, py, x0, y0, x1, y1) {
-    const dx = Math.max(x0 - px, 0, px - x1);
-    const dy = Math.max(y0 - py, 0, py - y1);
-    return Math.sqrt(dx * dx + dy * dy);
-  }
-  const dist = Math.min(
-    rectDist(nx, ny, vx1, vy1, vx2, vy2),
-    rectDist(nx, ny, hx1, hy1, hx2, hy2),
-  );
-
-  // Ambient glow that fades with distance
-  const glowR = 0.13;
-  if (dist < glowR) {
-    const t = (1 - dist / glowR) ** 2.2 * 0.55;
-    return [
-      Math.round(BG[0] + (GOLD[0] - BG[0]) * t),
-      Math.round(BG[1] + (GOLD[1] - BG[1]) * t),
-      Math.round(BG[2] + (GOLD[2] - BG[2]) * t),
-      255,
-    ];
-  }
-
-  return [...BG, 255];
+  if (x1 < 0) throw new Error('source image is fully transparent');
+  return { x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
 }
 
-// ─── Generate files ──────────────────────────────────────────────────────────
+/** Grow a box to a square around its own centre, clamped to the image. */
+function squared(rect, img) {
+  const side = Math.min(Math.max(rect.w, rect.h), img.w, img.h);
+  const cx   = rect.x + rect.w / 2;
+  const cy   = rect.y + rect.h / 2;
+  return {
+    x: Math.round(Math.min(Math.max(cx - side / 2, 0), img.w - side)),
+    y: Math.round(Math.min(Math.max(cy - side / 2, 0), img.h - side)),
+    w: side, h: side,
+  };
+}
 
-// Standard icons (purpose: any)
+/**
+ * Area-average resample of `rect` from `img` down to dw×dh.
+ * Alpha is premultiplied for the averaging and divided back out afterwards,
+ * so the transparent margin never bleeds dark fringes into the edges.
+ */
+function resample(img, rect, dw, dh) {
+  const out     = image(dw, dh);
+  const scaleX  = rect.w / dw;
+  const scaleY  = rect.h / dh;
+
+  for (let dy = 0; dy < dh; dy++) {
+    const fy0 = rect.y + dy * scaleY, fy1 = fy0 + scaleY;
+    const y0  = Math.max(0, Math.floor(fy0));
+    const y1  = Math.min(img.h - 1, Math.ceil(fy1) - 1);
+
+    for (let dx = 0; dx < dw; dx++) {
+      const fx0 = rect.x + dx * scaleX, fx1 = fx0 + scaleX;
+      const x0  = Math.max(0, Math.floor(fx0));
+      const x1  = Math.min(img.w - 1, Math.ceil(fx1) - 1);
+
+      let r = 0, g = 0, b = 0, alpha = 0, area = 0;
+      for (let y = y0; y <= y1; y++) {
+        const wy = Math.min(y + 1, fy1) - Math.max(y, fy0);
+        if (wy <= 0) continue;
+        for (let x = x0; x <= x1; x++) {
+          const wx = Math.min(x + 1, fx1) - Math.max(x, fx0);
+          if (wx <= 0) continue;
+          const weight = wx * wy;
+          const i      = (y * img.w + x) * 4;
+          const a      = (img.data[i+3] / 255) * weight;
+          r += img.data[i] * a; g += img.data[i+1] * a; b += img.data[i+2] * a;
+          alpha += a; area += weight;
+        }
+      }
+
+      const o = (dy * dw + dx) * 4;
+      if (alpha > 0) {
+        out.data[o]   = Math.round(r / alpha);
+        out.data[o+1] = Math.round(g / alpha);
+        out.data[o+2] = Math.round(b / alpha);
+        out.data[o+3] = Math.round((alpha / area) * 255);
+      }
+    }
+  }
+  return out;
+}
+
+/** Source-over composite of `src` onto `dst` at (ox, oy). Mutates `dst`. */
+function over(dst, src, ox, oy) {
+  for (let y = 0; y < src.h; y++) {
+    const dy = oy + y;
+    if (dy < 0 || dy >= dst.h) continue;
+    for (let x = 0; x < src.w; x++) {
+      const dx = ox + x;
+      if (dx < 0 || dx >= dst.w) continue;
+      const s = (y * src.w + x) * 4;
+      const d = (dy * dst.w + dx) * 4;
+      const sa = src.data[s+3] / 255;
+      if (sa === 0) continue;
+      const da = (dst.data[d+3] / 255) * (1 - sa);
+      const oa = sa + da;
+      for (let c = 0; c < 3; c++) {
+        dst.data[d+c] = Math.round((src.data[s+c] * sa + dst.data[d+c] * da) / oa);
+      }
+      dst.data[d+3] = Math.round(oa * 255);
+    }
+  }
+  return dst;
+}
+
+/**
+ * Average colour of the artwork's own outer edge, sampled just inside `rect`
+ * and away from the rounded corners. Padding and flattening with this keeps
+ * the seam invisible wherever the tile has to be set into a larger square.
+ */
+function edgeColour(img, rect) {
+  const inset = Math.round(rect.w * 0.03);
+  let r = 0, g = 0, b = 0, n = 0;
+
+  const sample = (x, y) => {
+    const i = (y * img.w + x) * 4;
+    if (img.data[i+3] < 250) return;
+    r += img.data[i]; g += img.data[i+1]; b += img.data[i+2]; n++;
+  };
+
+  for (let t = 0.15; t <= 0.85; t += 0.01) {
+    const x = Math.round(rect.x + rect.w * t);
+    const y = Math.round(rect.y + rect.h * t);
+    sample(x, rect.y + inset);                  // top edge
+    sample(x, rect.y + rect.h - 1 - inset);     // bottom edge
+    sample(rect.x + inset, y);                  // left edge
+    sample(rect.x + rect.w - 1 - inset, y);     // right edge
+  }
+  if (!n) throw new Error('could not sample an edge colour');
+  return [Math.round(r / n), Math.round(g / n), Math.round(b / n)];
+}
+
+const hex = ([r, g, b]) =>
+  '#' + [r, g, b].map((v) => v.toString(16).padStart(2, '0')).join('');
+
+// ─── Generate ───────────────────────────────────────────────────────────────
+const source = decodePNG(readFileSync(SOURCE));
+
+// Threshold 128 rather than 1: the drop shadow and the outer glow are faint,
+// and cropping to them would leave a ring of near-empty pixels on every icon.
+const tile = squared(alphaBounds(source, 128), source);
+const edge = edgeColour(source, tile);
+
+console.log(`source ${source.w}×${source.h} → tile ${tile.w}×${tile.h} at (${tile.x},${tile.y})`);
+console.log(`edge colour ${hex(edge)}\n`);
+
+function write(path, img) {
+  const buf = encodePNG(img);
+  writeFileSync(path, buf);
+  console.log(`wrote ${path}  (${img.w}×${img.h}, ${buf.length} bytes)`);
+}
+
+// Standard icons — the tile as drawn, rounded corners and all (purpose: any).
 for (const size of [192, 512]) {
-  const buf  = makePNG(size, (x, y, s) => crossPixel(x, y, s, 0));
-  const dest = join(ICONS, `icon-${size}.png`);
-  writeFileSync(dest, buf);
-  console.log(`wrote ${dest}  (${buf.length} bytes)`);
+  write(join(ICONS, `icon-${size}.png`), resample(source, tile, size, size));
 }
 
-// Apple touch icon 180×180
+// Maskable — full-bleed background in the artwork's own edge colour, tile
+// inside the safe zone, so a launcher can crop to any shape without biting
+// into the book or the question mark.
 {
-  const buf  = makePNG(180, (x, y, s) => crossPixel(x, y, s, 0));
-  const dest = join(ICONS, 'apple-touch-icon.png');
-  writeFileSync(dest, buf);
-  console.log(`wrote ${dest}  (${buf.length} bytes)`);
+  const size  = 512;
+  const inner = Math.round(size * SAFE_ZONE);
+  const pad   = Math.round((size - inner) / 2);
+  const canvas = image(size, size, [...edge, 255]);
+  write(join(ICONS, 'icon-maskable-512.png'),
+        over(canvas, resample(source, tile, inner, inner), pad, pad));
 }
 
-// Favicon SVG  (vector, sharp at any size)
+// Apple touch icon — flattened onto the edge colour: iOS renders any
+// transparency as black and applies its own mask, so the tile goes full bleed.
+{
+  const size   = 180;
+  const canvas = image(size, size, [...edge, 255]);
+  write(join(ICONS, 'apple-touch-icon.png'),
+        over(canvas, resample(source, tile, size, size), 0, 0));
+}
+
+// Favicon — vector, and deliberately not a shrunken copy of the logo: at 16px
+// the rays and the book turn to mush, so this keeps only the part that still
+// reads at that size, the gold question mark on the blue tile.
 const faviconSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#0a0f1e"/>
-  <path fill="#d4af37" d="M13 4h6v6h9v6h-9v16h-6V16H4v-6h9z"/>
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#1e57c8"/>
+      <stop offset="100%" stop-color="${hex(edge)}"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd966"/>
+      <stop offset="100%" stop-color="#e8a317"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="url(#sky)"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="4.4" stroke-linecap="round">
+    <path d="M10.4 11.6a5.8 5.8 0 1 1 5.8 5.8v2.4"/>
+  </g>
+  <circle cx="16.2" cy="25.4" r="2.6" fill="url(#gold)"/>
 </svg>
 `;
 writeFileSync(join(PUBLIC, 'favicon.svg'), faviconSVG);
 console.log(`wrote ${join(PUBLIC, 'favicon.svg')}`);
 
-console.log('\nDone. Run again whenever the brand colours change.');
+console.log('\nDone. Run again whenever logo-design.png changes.');
